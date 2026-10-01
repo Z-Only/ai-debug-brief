@@ -2,6 +2,20 @@
 
 A browser-only workspace for turning Jenkins, Docker, and Maven logs into a structured debugging brief to paste into ChatGPT. Built with Vue 3, TypeScript, Vite, and Bun. It prepares a prompt; it does not run a model, execute commands, or confirm a root cause. No API keys or backend are required.
 
+[Open the public tool](https://ai-debug-brief.m2-zhao.chatgpt.site)
+
+## Use it
+
+1. Paste a relevant log excerpt, or load the explicitly synthetic Maven example.
+2. Add the actual command, working directory, environment versions, and the question you want answered.
+3. Add exact literal masks for private paths, project names, or identifiers the built-in heuristics may miss.
+4. Generate the brief. Review the redacted context, line-cited excerpts, cautious hypotheses, omitted-line counts, and complete Markdown.
+5. Acknowledge your review and copy the brief into your own AI conversation. If clipboard access fails, select and copy the complete Markdown manually.
+
+Useful starting points include a missing Dockerfile/build-context path, Maven test compilation despite `-DskipTests`, dependency resolution errors, and Java class-version or exception diagnostics. Informational matches such as dynamic-agent warnings are not treated as proof of failure. Unrecognized logs still produce context excerpts, without invented explanations.
+
+English/Chinese and light/dark/system appearance are available. All input and preferences are held in memory for the current page; reloading discards them. Editing any input or changing language invalidates the old brief and its review acknowledgement.
+
 ## Development
 
 Requires Node.js 22.12+ (Node 24 recommended), Bun 1.4.2, Python 3, and Git.

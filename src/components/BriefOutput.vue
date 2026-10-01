@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { nextTick } from "vue";
 import type { AnalysisResult } from "../domain";
 import type { Copy } from "../i18n";
 import EvidenceView from "./EvidenceView.vue";
@@ -6,7 +7,7 @@ defineProps<{ t: Copy; result: AnalysisResult | null; copied: boolean }>();
 const tab = defineModel<"evidence" | "markdown">("tab", { required: true });
 const reviewed = defineModel<boolean>("reviewed", { required: true });
 defineEmits<{ copy: [] }>();
-function moveTab(event: KeyboardEvent) {
+async function moveTab(event: KeyboardEvent) {
   if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
   event.preventDefault();
   tab.value =
@@ -17,6 +18,8 @@ function moveTab(event: KeyboardEvent) {
         : tab.value === "evidence"
           ? "markdown"
           : "evidence";
+  // Wait for the parent v-model update before moving focus to the selected tab.
+  await nextTick();
   document.getElementById(`${tab.value}-tab`)?.focus();
 }
 </script>

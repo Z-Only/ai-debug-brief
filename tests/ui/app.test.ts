@@ -200,17 +200,22 @@ describe("local brief workflow", () => {
     const wrapper = app();
     await example(wrapper);
     const tabs = wrapper.get('[role="tablist"]');
+    wrapper.get<HTMLButtonElement>("#evidence-tab").element.focus();
     await tabs.trigger("keydown", { key: "ArrowRight" });
+    expect(document.activeElement).toBe(wrapper.get("#markdown-tab").element);
     expect(wrapper.get("#markdown-tab").attributes("aria-selected")).toBe(
       "true",
     );
     await tabs.trigger("keydown", { key: "ArrowLeft" });
+    expect(document.activeElement).toBe(wrapper.get("#evidence-tab").element);
     expect(wrapper.get("#evidence-tab").attributes("aria-selected")).toBe(
       "true",
     );
     await tabs.trigger("keydown", { key: "End" });
+    expect(document.activeElement).toBe(wrapper.get("#markdown-tab").element);
     expect(wrapper.find("#markdown-panel").exists()).toBe(true);
     await tabs.trigger("keydown", { key: "Home" });
+    expect(document.activeElement).toBe(wrapper.get("#evidence-tab").element);
     expect(wrapper.find("#evidence-panel").exists()).toBe(true);
     await tabs.trigger("keydown", { key: "x" });
     expect(wrapper.find("#evidence-panel").exists()).toBe(true);
