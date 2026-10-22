@@ -16,17 +16,17 @@
     "ci-gate": "bash scripts/ci_gate.sh"
   },
   "dependencies": {
-    "vue": "3.5.43"
+    "vue": "3.5.44"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "6.0.9",
-    "@vitest/coverage-v8": "5.0.3",
+    "@vitejs/plugin-vue": "6.0.10",
+    "@vitest/coverage-v8": "5.0.5",
     "@vue/test-utils": "2.5.1",
     "happy-dom": "20.14.5",
     "typescript": "6.0.3",
-    "vite": "8.3.2",
-    "vitest": "5.0.3",
-    "vue-tsc": "3.3.11"
+    "vite": "8.3.4",
+    "vitest": "5.0.5",
+    "vue-tsc": "3.3.13"
   },
   "description": "A local-first debugging brief builder for build and container logs.",
   "license": "MIT",
