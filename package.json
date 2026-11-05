@@ -26,7 +26,7 @@
     "typescript": "6.0.3",
     "vite": "8.3.5",
     "vitest": "5.0.5",
-    "vue-tsc": "3.3.13"
+    "vue-tsc": "3.3.14"
   },
   "description": "A local-first debugging brief builder for build and container logs.",
   "license": "MIT",
